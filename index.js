@@ -32,7 +32,7 @@ client.on('messageCreate', async (message) => {
         });
 
         // Pošle zprávu
-        await message.channel.send(`💰 - Banka byla vykradena **${datum}** ve **${cas}**.\n⏳ - Další banka půjde **${datum2}** ve **${cas2}**.`);
+        await message.channel.send(`> 💰 × Banka byla vykradena **${datum}** ve **${cas}**.\n⏳ × Další banka půjde **${datum2}** ve **${cas2}**.`);
 
         // Smazání příkazové zprávy
         try {
@@ -65,7 +65,7 @@ client.on('messageCreate', async (message) => {
         });
 
         // Pošle zprávu
-        await message.channel.send(`🛒 - Sámoška byla vykradena **${datum}** ve **${cas}**.\n⏳ - Další sámoška půjde **${datum2}** ve **${cas2}**.`);
+        await message.channel.send(`> 🛒 × Sámoška byla vykradena **${datum}** ve **${cas}**.\n⏳ × Další sámoška půjde **${datum2}** ve **${cas2}**.`);
 
         // Smazání příkazové zprávy
         try {
