@@ -11,18 +11,23 @@ client.once('ready', () => {
 
 client.on('messageCreate', async (message) => {
     if (message.content === '!banka' && !message.author.bot) {
-        // Získání aktuálního času
         const cas = new Date().toLocaleTimeString('cs-CZ', { 
             hour: '2-digit', 
             minute: '2-digit', 
             second: '2-digit' 
         });
 
-        // Poslání nové zprávy bez odpovědi na autora
+        // Pošle novou zprávu s časem
         await message.channel.send(`Banka byla vykradena v: ${cas}`);
 
-        // Smazání původního příkazu
-        await message.delete().catch(console.error);
+        // Pokusí se smazat zprávu s příkazem (!banka), ale ignoruje chybu, pokud už neexistuje
+        try {
+            await message.delete();
+        } catch (error) {
+            if (error.code !== 10008) {
+                console.error("Chyba při mazání zprávy:", error);
+            }
+        }
     }
 });
 
