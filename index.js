@@ -7,6 +7,7 @@ const client = new Client({
 
 client.once('ready', () => {
     console.log(`✅ Přihlášen jako ${client.user.tag}`);
+    setTimeout(() => console.log("Bot stále běží..."), 5000);
 });
 
 // Přidání Setu na ukládání ID zpráv, které už byly zpracovány
