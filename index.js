@@ -22,7 +22,7 @@ client.on('messageCreate', async (message) => {
         const cas2 = nextHour.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
         // Pošle zprávu
-        await message.channel.send(`🏦 **Banka byla vykradena ${datum} ve ${cas}.**\n⏳ Další banka půjde ${datum2} ve ${cas2}.`);
+        await message.channel.send(`🏦 - Banka byla vykradena **${datum}** ve **${cas}**.\n⏳ - Další banka půjde **${datum2}** ve **${cas2}**.`);
 
         // Smazání příkazové zprávy
         try {
