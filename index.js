@@ -31,19 +31,21 @@ client.on('messageCreate', async (message) => {
             timeZone: 'Europe/Prague'
         });
     
+        const { EmbedBuilder } = require('discord.js');
+
         const embed = new EmbedBuilder()
             .setColor('#ffcc00')
             .setTitle('🏦 Bankovní loupež')
             .setDescription(`💰 **Banka byla vykradena**
-    📅 **Datum:** ${datum}
-    ⏰ **Čas:** ${cas}
-    
-    ⏳ **Další banka půjde vykrást**
-    📅 **Datum:** ${datum2}
-    ⏰ **Čas:** ${cas2}`)
-            .setFooter('Bankovní systém', 'https://example.com/icon.png')
+        📅 **Datum:** ${datum}
+        ⏰ **Čas:** ${cas}
+
+        ⏳ **Další banka půjde vykrást**
+        📅 **Datum:** ${datum2}
+        ⏰ **Čas:** ${cas2}`)
+            .setFooter({ text: 'Bankovní systém', iconURL: 'https://example.com/icon.png' })
             .setTimestamp();
-    
+
         await message.channel.send({ embeds: [embed] });
     
         try {
