@@ -119,7 +119,7 @@ client.on('messageCreate', async (message) => {
             timeZone: 'Europe/Prague'
         });
     
-        await message.channel.send(`> 🌱   ×   ${message.author} sklidil **${pocet}** weedu **${datum}** ve **${cas}**.`);
+        await message.channel.send(`> ✂️   ×   ${message.author} sklidil **${pocet}** weedu **${datum}** ve **${cas}**.`);
     
         try {
             await message.delete();
