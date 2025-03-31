@@ -5,6 +5,8 @@ const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
 });
 
+const { MessageEmbed } = require('discord.js');
+
 client.once('ready', () => {
     console.log(`✅ Přihlášen jako ${client.user.tag}`);
 });
@@ -19,7 +21,7 @@ client.on('messageCreate', async (message) => {
             second: '2-digit',
             timeZone: 'Europe/Prague' 
         });
-
+    
         const nextHour = new Date(now.getTime() + 60 * 60 * 1000);
         const datum2 = nextHour.toLocaleDateString('cs-CZ');
         const cas2 = nextHour.toLocaleTimeString('cs-CZ', { 
@@ -28,14 +30,27 @@ client.on('messageCreate', async (message) => {
             second: '2-digit',
             timeZone: 'Europe/Prague'
         });
-
-        await message.channel.send(`> 💰   ×   Banka byla vykradena **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Další banka půjde vykrást **${datum2}** ve **${cas2}**.`);
-
+    
+        const embed = new MessageEmbed()
+            .setColor('#ffcc00')
+            .setTitle('🏦 Bankovní loupež')
+            .setDescription(`💰 **Banka byla vykradena**
+    📅 **Datum:** ${datum}
+    ⏰ **Čas:** ${cas}
+    
+    ⏳ **Další banka půjde vykrást**
+    📅 **Datum:** ${datum2}
+    ⏰ **Čas:** ${cas2}`)
+            .setFooter('Bankovní systém', 'https://example.com/icon.png')
+            .setTimestamp();
+    
+        await message.channel.send({ embeds: [embed] });
+    
         try {
             await message.delete();
         } catch (error) {
             if (error.code !== 10008) {
-                console.error("Chyba při mazání zprávy:", error);
+                console.error('Chyba při mazání zprávy:', error);
             }
         }
     }
