@@ -5,7 +5,6 @@ const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
 });
 
-const { EmbedBuilder } = require('discord.js');
 
 client.once('ready', () => {
     console.log(`✅ Přihlášen jako ${client.user.tag}`);
@@ -120,8 +119,17 @@ client.on('messageCreate', async (message) => {
             second: '2-digit',
             timeZone: 'Europe/Prague'
         });
-    
-        await message.channel.send(`> 🌱   ×   ${message.author} zasadil **${pocet}** kytek weedu **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Sklidit půjde **${datum2}** ve **${cas2}**.`);
+
+        const { EmbedBuilder } = require('discord.js');
+
+        const embed = new EmbedBuilder()
+            .setColor('#ffcc00')
+            .setTitle('🌱    SÁZENÍ WEEDU')
+            .setDescription(`> 🌱  ×   ${message.author} zasadil **${pocet}** kytek weedu **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Sklidit půjde **${datum2}** ve **${cas2}**`)
+            .setFooter({ text: 'WEED', iconURL: 'https://example.com/icon.png' })
+            .setTimestamp();
+
+        await message.channel.send({ embeds: [embed] });
     
         try {
             await message.delete();
@@ -146,8 +154,17 @@ client.on('messageCreate', async (message) => {
             second: '2-digit',
             timeZone: 'Europe/Prague'
         });
-    
-        await message.channel.send(`> ✂️   ×   ${message.author} sklidil **${pocet}** weedu **${datum}** ve **${cas}**.`);
+
+        const { EmbedBuilder } = require('discord.js');
+
+        const embed = new EmbedBuilder()
+            .setColor('#ffcc00')
+            .setTitle('✂️    SKLÍZENÍ WEEDU')
+            .setDescription(`> ✂️  ×   ${message.author} sklidil **${pocet}** weedu **${datum}** ve **${cas}**.`)
+            .setFooter({ text: 'WEED', iconURL: 'https://example.com/icon.png' })
+            .setTimestamp();
+
+        await message.channel.send({ embeds: [embed] });
     
         try {
             await message.delete();
