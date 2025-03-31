@@ -35,15 +35,15 @@ client.on('messageCreate', async (message) => {
 
         const embed = new EmbedBuilder()
             .setColor('#ffcc00')
-            .setTitle('🏦 Bankovní loupež')
+            .setTitle('🏦    VYKRÁDÁNÍ BANKY')
             .setDescription(`💰 **Banka byla vykradena**
-        📅 **Datum:** ${datum}
-        ⏰ **Čas:** ${cas}
+        📅    **Datum:** ${datum}
+        ⏰    **Čas:** ${cas}
 
         ⏳ **Další banka půjde vykrást**
-        📅 **Datum:** ${datum2}
-        ⏰ **Čas:** ${cas2}`)
-            .setFooter({ text: 'Bankovní systém', iconURL: 'https://example.com/icon.png' })
+        📅    **Datum:** ${datum2}
+        ⏰    **Čas:** ${cas2}`)
+            .setFooter({ text: 'BANKA', iconURL: 'https://example.com/icon.png' })
             .setTimestamp();
 
         await message.channel.send({ embeds: [embed] });
