@@ -71,7 +71,7 @@ client.on('messageCreate', async (message) => {
     if (message.content.startsWith('!zasadit ') && !message.author.bot) {
         const args = message.content.split(' ');
         const pocet = args[1];
-        if (!pocet || isNaN(pocet)) {
+        if (args.length < 2 || isNaN(args[1])) {
             return message.channel.send('Musíš zadat platný počet!');
         }
     
@@ -106,7 +106,7 @@ client.on('messageCreate', async (message) => {
     if (message.content.startsWith('!sklidit ') && !message.author.bot) {
         const args = message.content.split(' ');
         const pocet = args[1];
-        if (!pocet || isNaN(pocet)) {
+        if (args.length < 2 || isNaN(args[1])) {
             return message.channel.send('Musíš zadat platný počet!');
         }
     
