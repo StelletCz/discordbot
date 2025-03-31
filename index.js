@@ -36,13 +36,7 @@ client.on('messageCreate', async (message) => {
         const embed = new EmbedBuilder()
             .setColor('#ffcc00')
             .setTitle('🏦    VYKRÁDÁNÍ BANKY')
-            .setDescription(`💰 **Banka byla vykradena**
-        📅    **Datum:** ${datum}
-        ⏰    **Čas:** ${cas}
-
-        ⏳ **Další banka půjde vykrást**
-        📅    **Datum:** ${datum2}
-        ⏰    **Čas:** ${cas2}`)
+            .setDescription(`💰  ×   Sámoška byla vykradena **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Další sámoška půjde vykrást **${datum2}** ve **${cas2}`)
             .setFooter({ text: 'BANKA', iconURL: 'https://example.com/icon.png' })
             .setTimestamp();
 
