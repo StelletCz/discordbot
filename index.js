@@ -5,7 +5,7 @@ const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
 });
 
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 client.once('ready', () => {
     console.log(`✅ Přihlášen jako ${client.user.tag}`);
@@ -31,7 +31,7 @@ client.on('messageCreate', async (message) => {
             timeZone: 'Europe/Prague'
         });
     
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor('#ffcc00')
             .setTitle('🏦 Bankovní loupež')
             .setDescription(`💰 **Banka byla vykradena**
@@ -53,6 +53,14 @@ client.on('messageCreate', async (message) => {
                 console.error('Chyba při mazání zprávy:', error);
             }
         }
+
+        client.on('error', (error) => {
+            console.error('Došlo k chybě v klientovi:', error);
+        });
+        
+        process.on('unhandledRejection', (reason, promise) => {
+            console.error('Neošetřený promise rejection:', reason);
+        });
     }
     if (message.content === '!samoska' && !message.author.bot) {
         const now = new Date();
