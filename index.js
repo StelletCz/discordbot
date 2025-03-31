@@ -29,7 +29,7 @@ client.on('messageCreate', async (message) => {
             timeZone: 'Europe/Prague'
         });
 
-        await message.channel.send(`> 💰   ×   Banka byla vykradena **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Další banka půjde **${datum2}** ve **${cas2}**.`);
+        await message.channel.send(`> 💰   ×   Banka byla vykradena **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Další banka půjde vykrást **${datum2}** ve **${cas2}**.`);
 
         try {
             await message.delete();
@@ -58,7 +58,7 @@ client.on('messageCreate', async (message) => {
             timeZone: 'Europe/Prague'
         });
 
-        await message.channel.send(`> 🛒   ×   Sámoška byla vykradena **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Další sámoška půjde **${datum2}** ve **${cas2}**.`);
+        await message.channel.send(`> 🛒   ×   Sámoška byla vykradena **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Další sámoška půjde vykrást **${datum2}** ve **${cas2}**.`);
 
         try {
             await message.delete();
