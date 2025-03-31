@@ -68,6 +68,41 @@ client.on('messageCreate', async (message) => {
             }
         }
     }
+    if (message.content.startsWith('!zasadit ') && !message.author.bot) {
+        const args = message.content.split(' ');
+        const pocet = args[1];
+        if (!pocet || isNaN(pocet)) {
+            return message.channel.send('Musíš zadat platný počet!');
+        }
+    
+        const now = new Date();
+        const datum = now.toLocaleDateString('cs-CZ');
+        const cas = now.toLocaleTimeString('cs-CZ', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZone: 'Europe/Prague'
+        });
+    
+        const harvestTime = new Date(now.getTime() + 20 * 60 * 60 * 1000);
+        const datum2 = harvestTime.toLocaleDateString('cs-CZ');
+        const cas2 = harvestTime.toLocaleTimeString('cs-CZ', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZone: 'Europe/Prague'
+        });
+    
+        await message.channel.send(`> 🌱   ×   ${message.author} zasadil **${pocet}** weedu **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Sklidit půjde **${datum2}** ve **${cas2}**.`);
+    
+        try {
+            await message.delete();
+        } catch (error) {
+            if (error.code !== 10008) {
+                console.error("Chyba při mazání zprávy:", error);
+            }
+        }
+    }
 });
 
 client.login(process.env.TOKEN);
