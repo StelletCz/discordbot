@@ -35,8 +35,8 @@ client.on('messageCreate', async (message) => {
 
         const embed = new EmbedBuilder()
             .setColor('#ffcc00')
-            .setTitle('🏦    VYKRÁDÁNÍ BANKY')
-            .setDescription(`💰  ×   Sámoška byla vykradena **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Další sámoška půjde vykrást **${datum2}** ve **${cas2}`)
+            .setTitle('💰    VYKRÁDÁNÍ BANKY')
+            .setDescription(`> 💰  ×   Banka byla vykradena **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Další banka půjde vykrást **${datum2}** ve **${cas2}**`)
             .setFooter({ text: 'BANKA', iconURL: 'https://example.com/icon.png' })
             .setTimestamp();
 
@@ -77,7 +77,16 @@ client.on('messageCreate', async (message) => {
             timeZone: 'Europe/Prague'
         });
 
-        await message.channel.send(`> 🛒   ×   Sámoška byla vykradena **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Další sámoška půjde vykrást **${datum2}** ve **${cas2}**.`);
+        const { EmbedBuilder } = require('discord.js');
+
+        const embed = new EmbedBuilder()
+            .setColor('#ffcc00')
+            .setTitle('🛒    VYKRÁDÁNÍ SÁMOŠKY')
+            .setDescription(`> 🛒  ×   Sámoška byla vykradena **${datum}** ve **${cas}**.\n > \n> ⏳   ×   Další sámoška půjde vykrást **${datum2}** ve **${cas2}**`)
+            .setFooter({ text: 'SÁMOŠKA', iconURL: 'https://example.com/icon.png' })
+            .setTimestamp();
+
+        await message.channel.send({ embeds: [embed] });
 
         try {
             await message.delete();
